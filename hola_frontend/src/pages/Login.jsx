@@ -96,7 +96,7 @@ const Login = () => {
           </div>
 
           {/* Google Login */}
-          <GoogleOAuthProvider clientId="407408718192.apps.googleusercontent.com">
+          <GoogleOAuthProvider clientId="566455144377-d3cc4unotahrehgcr78aotk74pao1tug.apps.googleusercontent.com">
             <div className="flex justify-center">
               <GoogleLogin
                 onSuccess={handleGoogleSuccess}

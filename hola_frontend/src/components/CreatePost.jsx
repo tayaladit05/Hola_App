@@ -43,16 +43,19 @@ const CreatePost = ({ onClose, onPostCreated }) => {
           imageUrl,
         };
       } else {
-        // Use base64 method
+        // Use base64 method - send as imageBase64 not imageUrl
         postData = {
           caption,
-          imageUrl: imagePreview, // Send base64 string
+          imageBase64: imagePreview, // Send base64 string with correct key
         };
       }
 
       const response = await postService.createPost(postData);
+      toast.success('Post created successfully!');
       onPostCreated(response);
+      onClose();
     } catch (error) {
+      console.error('Create post error:', error);
       toast.error(error.response?.data?.message || 'Failed to create post');
     } finally {
       setLoading(false);

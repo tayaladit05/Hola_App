@@ -13,20 +13,23 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          Public Routes
+          {/* Public Routes */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/verify-otp" element={<VerifyOTP />} />
 
           {/* Protected Routes */}
-          {/* Temporarily unprotected for testing - remove ProtectedRoute wrapper */}
           <Route
             path="/"
-            element={<Home />}
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
           />
 
-          {/* Redirect unknown routes */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          {/* Redirect unknown routes to login */}
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
 
         {/* Toast Notifications */}
